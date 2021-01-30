@@ -1,6 +1,6 @@
 import React from "react";
 
-function SelectAssistant() {
+function SelectAssistant({ assistant }) {
   return (
     <div className="row">
       <div className="col-md-6 mx-auto">
