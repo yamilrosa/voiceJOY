@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function SelectAssistant({ assistant, setCommand }) {
   const [value, setValue] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      const textInput = document.getElementById("text-input");
+      textInput.focus();
+      textInput.placeholder = "type here...";
+    }, 2000);
+  }, []);
 
   return (
     <div className="row">
