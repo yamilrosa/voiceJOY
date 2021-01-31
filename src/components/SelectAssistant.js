@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
-function SelectAssistant({ assistant }) {
+function SelectAssistant({ assistant, setCommand }) {
+  const [value, setValue] = useState("");
+
   return (
     <div className="row">
       <div className="col-md-6 mx-auto">
-        <form className="mb-5">
+        <form className="mb-5" onSubmit={() => setCommand(value)}>
           <div className="form-group">
-            <input name="" id="text-input" className="form-control form-control-lg mt-5 input-custom" placeholder="" />
+            <input onChange={e => setValue(e.target.value)} value={value} name="" id="text-input" className="form-control form-control-lg mt-5 input-custom" placeholder="" />
           </div>
 
           <button className="btn btn-primary btn-lg btn-block">COMMUNICATE</button>
