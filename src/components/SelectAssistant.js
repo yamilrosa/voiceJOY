@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function SelectAssistant({ assistant, setCommand, command }) {
+function SelectAssistant({ assistant, setCommand, command, setModal }) {
   const [value, setValue] = useState("");
 
   useEffect(() => {
@@ -11,7 +11,15 @@ function SelectAssistant({ assistant, setCommand, command }) {
     }, 2000);
   }, []);
 
-  function onSubmitHandler() {
+  function onClickHandler() {
+    setModal(prev => {
+      return !prev;
+    });
+  }
+
+  function onSubmitHandler(e) {
+    e.preventDefault();
+
     // Init SpeechSynth API
     const synth = window.speechSynthesis;
 
@@ -81,7 +89,7 @@ function SelectAssistant({ assistant, setCommand, command }) {
           <button className="btn btn-primary btn-lg btn-block">COMMUNICATE</button>
         </form>
 
-        <button className="btn btn-default btn-lg btn-block mb-5 negative-margin" id="favoritesButton" data-toggle="modal" data-target="#favorites">
+        <button onClick={onClickHandler} className="btn btn-default btn-lg btn-block mb-5 negative-margin" id="favoritesButton" data-toggle="modal" data-target="#favorites">
           <i className="far fa-star"></i> FAVORITES
         </button>
         <a href="#">
